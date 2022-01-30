@@ -26,7 +26,8 @@ export default function SignIn({setName}) {
 
   const [disabled, setDisabeld ] = useState(true);
   const [string, setString] = useState('');
-  console.log({string, disabled});
+  const [isComposed, setIsComposed] = useState('false');
+  console.log({string, disabled, isComposed});
 
   useEffect(()=>{
     const disabled = string === ''
@@ -70,9 +71,18 @@ export default function SignIn({setName}) {
               onChange={(e)=>{setString(e.target.value)}}
               onKeyDown={(e)=>{
                 console.log({key: e.key});
+                if(isComposed) return;
                 if(e.key === "Enter"){
                   setName(e.target.value)
                 e.preventDefault();}
+              }}
+              onCompositionStart={()=>{
+                setIsComposed(true);
+                console.log('日本語入力始まった')
+              }}
+              onCompositionEnd={()=>{
+                setIsComposed(false);
+                console.log('日本語入力終わった')
               }}
             />
             <Button
