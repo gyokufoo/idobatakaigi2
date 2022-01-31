@@ -1,7 +1,8 @@
 import React from "react";
+import { Box } from "@mui/system";
 
 const MessageList = () => {
-    return <div>MessageList</div>
+    return <Box sx={{gridRow:1}}>MessageList</Box>
 }
 
 export default MessageList;

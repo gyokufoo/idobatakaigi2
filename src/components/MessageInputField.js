@@ -1,7 +1,8 @@
 import React from "react";
+import { Box } from "@mui/system";
 
 const MessageInputField = () => {
-    return <div>MessageInputFiled</div>
+    return <Box sx={{gridRow:2}}>MessageInputFiled</Box>
 }
 
 export default MessageInputField;
