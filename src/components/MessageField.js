@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { TextField } from "@mui/material";
+import { pushMessage } from "../firebase";
 
 const MessageField = ({setText,text,name}) => {
     const [isComposed, setIsComposed] = useState(false);
-    console.log({text});
     return (
     <TextField
         fullWidth={true}
@@ -14,7 +14,7 @@ const MessageField = ({setText,text,name}) => {
             const text = e.target.value;
             if(text === '') return;
             if(e.key === "Enter"){
-                console.log("push message to firebase");
+                pushMessage({name:'gyoku',text});
                 setText('');
                 e.preventDefault();
             }
