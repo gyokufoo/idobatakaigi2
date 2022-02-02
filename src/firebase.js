@@ -14,9 +14,9 @@ const firebaseConfig = {
 
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
-  const messageRef = ref(database, 'messages');
+  const messagesRef = ref(database, 'messages');
 
   export const pushMessage = ({name, text}) => {
-    push(messageRef,{name,text});
+    push(messagesRef,{name,text});
 
   };
