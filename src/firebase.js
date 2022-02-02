@@ -1,7 +1,6 @@
 import {initializeApp} from 'firebase/app';
 import {getDatabase, push, ref} from 'firebase/database';
 
-console.log(process.env.REACT_APP_FOO);
 const {
     REACT_APP_FIREBASE_API_KEY,
     REACT_APP_FIREBASE_AUTH_DOMAIN,
