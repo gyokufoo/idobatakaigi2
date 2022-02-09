@@ -1,11 +1,20 @@
-import { Avatar, ListItem, ListItemAvatar, ListItemText, Typography, Divider } from "@mui/material";
-import React from "react";
+import { Avatar, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
+import React, {useEffect, useRef} from "react";
+import { gravatarPath } from "../gravatar";
 
-const MessageItem = ({key,name,text}) => {
+const MessageItem = ({isLastItem,name,text}) => {
+  const avatarPath = gravatarPath(name);
+  const ref = useRef(null);
+  useEffect(()=>{
+    if(isLastItem){
+      ref.current.scrollIntoView({behavior:'smooth'});
+    }
+  },[isLastItem]);
+
   return (
-    <ListItem divider={true} alignItems="flex-start">
+    <ListItem divider={true} ref={ref}>
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar src={avatarPath} />
         </ListItemAvatar>
         <ListItemText
           primary={name}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Box } from "@mui/system";
 import { messagesRef } from "../firebase";
 import { limitToLast, onValue, orderByKey, query } from "firebase/database";
 import { List } from "@mui/material";
@@ -27,14 +26,14 @@ const MessageList = () => {
         )
     },[]);
 
-    // messagesRef.on('value', (snapshot)=>{
-    //     console.log(snapshot.val());
-    // })
+    const length = messages.length;
+
     return (
-        <List sx={{gridRow:1, width: '100%', maxWidth: 360, bgcolor: 'background.paper', overflow:"auto"}}>
+        <List sx={{gridRow:1, width: '100%', bgcolor: 'background.paper', overflow:"auto"}}>
             {
-                messages.map(({key, name, text}) => {
-                    return  <MessageItem key={key} name={name} text={text}>MessageItem</MessageItem>
+                messages.map(({key, name, text}, index) => {
+                    const isLastItem = length === index + 1;
+                    return  <MessageItem key={key} name={name} text={text} isLastItem={isLastItem} />
                 })
             }
         </List>
